@@ -123,18 +123,33 @@ void show()
       Serial.write(0xff);
       Serial.write(0xff);
   }
-  if (COUNTER == 3)
+  if (COUNTER == 20)
   {
     showCalibrationMsg();
     COUNTER = 0;
+  }
+  else if (COUNTER != 20)
+  {
+    showClearMsg();
   }
 }
 
 void showCalibrationMsg()
 {
-  Serial.print("t0.txt=");
+  Serial.print("t4.txt=");
   Serial.print("\"");
   Serial.print("Calibrate Again");
+  Serial.print("\"");
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
+}
+
+void showClearMsg()
+{
+  Serial.print("t4.txt=");
+  Serial.print("\"");
+  Serial.print("");
   Serial.print("\"");
   Serial.write(0xff);
   Serial.write(0xff);
