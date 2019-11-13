@@ -57,14 +57,14 @@ void show()
     {
       FLAG_2 = true;
       //      Serial.println((millis() - prev_millis)/1000);
-//      Serial.print("t3.txt=");
-//      Serial.print("\"");
-//      Serial.print((CURRENT_VAL - PREV_VAL) / dt );
-//      Serial.print(counter);
-//      Serial.print("\"");
-//      Serial.write(0xff);
-//      Serial.write(0xff);
-//      Serial.write(0xff);
+      //      Serial.print("t3.txt=");
+      //      Serial.print("\"");
+      //      Serial.print((CURRENT_VAL - PREV_VAL) / dt );
+      //      Serial.print(counter);
+      //      Serial.print("\"");
+      //      Serial.write(0xff);
+      //      Serial.write(0xff);
+      //      Serial.write(0xff);
       //      Serial.println("FLAG_2 set true");
     }
     else FLAG_2 = false;
@@ -73,55 +73,55 @@ void show()
 
   if (FLAG_1 == true && FLAG_2 == true)
   {
-//    digitalWrite(13, HIGH);
-      COUNTER += 1;
-      Serial.print("t3.txt=");
-      Serial.print("\"");
-//      Serial.print("HIGH !");
-      Serial.print(COUNTER);
-//      Serial.print(counter);
-      Serial.print("\"");
-      Serial.write(0xff);
-      Serial.write(0xff);
-      Serial.write(0xff);
+    //    digitalWrite(13, HIGH);
+    COUNTER += 1;
+    Serial.print("t3.txt=");
+    Serial.print("\"");
+    //      Serial.print("HIGH !");
+    Serial.print(COUNTER);
+    //      Serial.print(counter);
+    Serial.print("\"");
+    Serial.write(0xff);
+    Serial.write(0xff);
+    Serial.write(0xff);
 
-      
+
   }
   else if (FLAG_1 == false && FLAG_2 == false)
   {
-//    digitalWrite(13, LOW);
-      Serial.print("t3.txt=");
-      Serial.print("\"");
-//      Serial.print("LOW!");
-      Serial.print(COUNTER);
-      Serial.print("\"");
-      Serial.write(0xff);
-      Serial.write(0xff);
-      Serial.write(0xff);
+    //    digitalWrite(13, LOW);
+    Serial.print("t3.txt=");
+    Serial.print("\"");
+    //      Serial.print("LOW!");
+    Serial.print(COUNTER);
+    Serial.print("\"");
+    Serial.write(0xff);
+    Serial.write(0xff);
+    Serial.write(0xff);
   }
   else if (FLAG_1 == true && FLAG_2 == false)
   {
-//    digitalWrite(13, LOW);/
-          Serial.print("t3.txt=");
-      Serial.print("\"");
-//      Serial.print("LOW!");
-      Serial.print(COUNTER);
-      Serial.print("\"");
-      Serial.write(0xff);
-      Serial.write(0xff);
-      Serial.write(0xff);
+    //    digitalWrite(13, LOW);/
+    Serial.print("t3.txt=");
+    Serial.print("\"");
+    //      Serial.print("LOW!");
+    Serial.print(COUNTER);
+    Serial.print("\"");
+    Serial.write(0xff);
+    Serial.write(0xff);
+    Serial.write(0xff);
   }
   else if (FLAG_1 == false && FLAG_2 == true)
   {
-//    digitalWrite(13, LOW);
-      Serial.print("t3.txt=");
-      Serial.print("\"");
-//      Serial.print("LOW!");
-      Serial.print(COUNTER);
-      Serial.print("\"");
-      Serial.write(0xff);
-      Serial.write(0xff);
-      Serial.write(0xff);
+    //    digitalWrite(13, LOW);
+    Serial.print("t3.txt=");
+    Serial.print("\"");
+    //      Serial.print("LOW!");
+    Serial.print(COUNTER);
+    Serial.print("\"");
+    Serial.write(0xff);
+    Serial.write(0xff);
+    Serial.write(0xff);
   }
   if (COUNTER == 20)
   {
@@ -133,7 +133,9 @@ void show()
     showClearMsg();
   }
 }
-
+// ###################################################
+//           CALIBRATION MESSAGE WARNING             #
+// ###################################################
 void showCalibrationMsg()
 {
   Serial.print("t4.txt=");
@@ -144,7 +146,9 @@ void showCalibrationMsg()
   Serial.write(0xff);
   Serial.write(0xff);
 }
-
+// ###################################################
+//                  CLEAR MESSAGE                    #
+// ###################################################
 void showClearMsg()
 {
   Serial.print("t4.txt=");
@@ -261,7 +265,7 @@ void setup()
 {
   // REF_ = 0.000;
   Serial.begin(9600);
-//  counter = 1;
+  //  counter = 1;
   pinMode(4, INPUT); // BUTTON for saving current reading
 
   ads.begin(); // adc object
