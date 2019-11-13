@@ -33,7 +33,7 @@ int left, right;
 // FOR SETTING FLAGS FOR TIMER for checking no. of counts
 float MICRON_VAL = 0, DIA_MM = 0;
 bool FLAG_1 = false, FLAG_2 = false;
-
+int COUNTER = 0; // global var. to store no. of HIGH's
 //####################################################
 //           SOFTWARE TIMER INTERRUPT                #
 //####################################################
@@ -74,9 +74,11 @@ void show()
   if (FLAG_1 == true && FLAG_2 == true)
   {
 //    digitalWrite(13, HIGH);
+      COUNTER += 1;
       Serial.print("t3.txt=");
       Serial.print("\"");
-      Serial.print("HIGH !");
+//      Serial.print("HIGH !");
+      Serial.print(COUNTER);
 //      Serial.print(counter);
       Serial.print("\"");
       Serial.write(0xff);
@@ -90,7 +92,8 @@ void show()
 //    digitalWrite(13, LOW);
       Serial.print("t3.txt=");
       Serial.print("\"");
-      Serial.print("LOW!");
+//      Serial.print("LOW!");
+      Serial.print(COUNTER);
       Serial.print("\"");
       Serial.write(0xff);
       Serial.write(0xff);
@@ -101,7 +104,8 @@ void show()
 //    digitalWrite(13, LOW);/
           Serial.print("t3.txt=");
       Serial.print("\"");
-      Serial.print("LOW!");
+//      Serial.print("LOW!");
+      Serial.print(COUNTER);
       Serial.print("\"");
       Serial.write(0xff);
       Serial.write(0xff);
@@ -112,12 +116,29 @@ void show()
 //    digitalWrite(13, LOW);
       Serial.print("t3.txt=");
       Serial.print("\"");
-      Serial.print("LOW!");
+//      Serial.print("LOW!");
+      Serial.print(COUNTER);
       Serial.print("\"");
       Serial.write(0xff);
       Serial.write(0xff);
       Serial.write(0xff);
   }
+  if (COUNTER == 3)
+  {
+    showCalibrationMsg();
+    COUNTER = 0;
+  }
+}
+
+void showCalibrationMsg()
+{
+  Serial.print("t0.txt=");
+  Serial.print("\"");
+  Serial.print("Calibrate Again");
+  Serial.print("\"");
+  Serial.write(0xff);
+  Serial.write(0xff);
+  Serial.write(0xff);
 }
 // ####################################################
 //                  MAPPING FUNCTION                  #
@@ -564,10 +585,6 @@ void loop()
 
 
 }
-
-
-
-
 
 
 // ####################################################
