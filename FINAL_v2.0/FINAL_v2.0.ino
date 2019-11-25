@@ -34,6 +34,10 @@ int left, right;
 float MICRON_VAL = 0, DIA_MM = 0;
 bool FLAG_1 = false, FLAG_2 = false;
 int COUNTER = 0; // global var. to store no. of HIGH's
+
+unsigned long int LAST_TIME_ = 0;
+unsigned long int dt = 1200000; // 1-hr
+//unsigned long int dt = 5000;
 //####################################################
 //           SOFTWARE TIMER INTERRUPT                #
 //####################################################
@@ -273,8 +277,15 @@ void setup()
 
   //  for counting no. of times while grinding
   pinMode(13, OUTPUT);
-  Timer1.initialize(3000000); // micro seconds
-  Timer1.attachInterrupt(show);
+//  Timer1.initialize(3000000); // micro seconds
+//  Timer1.attachInterrupt(show);
+Serial.print("t4.txt=");
+          Serial.print("\"");
+          Serial.print(" ");
+          Serial.print("\"");
+          Serial.write(0xff);
+          Serial.write(0xff);
+          Serial.write(0xff);
 }
 
 
@@ -320,6 +331,31 @@ void loop()
   //  }
 
   //     Serial.println(voltage,3);
+
+       if(millis() - LAST_TIME_ >= dt){
+          // if 1-hr has passed then 
+          LAST_TIME_ = millis();
+
+          Serial.print("t4.txt=");
+          Serial.print("\"");
+          Serial.print("Re-Calibrate");
+          Serial.print("\"");
+          Serial.write(0xff);
+          Serial.write(0xff);
+          Serial.write(0xff);}
+          
+//          if (millis() - LAST_TIME_ <= dt)
+//          {
+//          Serial.print("t4.txt=");
+//          Serial.print("\"");
+//          Serial.print(" ");
+//          Serial.print("\"");
+//          Serial.write(0xff);
+//          Serial.write(0xff);
+//          Serial.write(0xff);
+//          }
+         
+     
   float dia_mm = mV2mm(voltage);
   DIA_MM = dia_mm; // for grinding check
   //     Serial.print("Dia. mm");
